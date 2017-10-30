@@ -10,7 +10,9 @@
 ```
 ```C++
     DB::Database *database = new DB::Database();
+    
     database->Connect("IP", "PORT", "USERNAME", "PASSWORD");
+    
     database->SetDatabase("DB_NAME");
 ```
 Closing connection
@@ -25,6 +27,7 @@ Closing connection
  Getting data
 ```C++
     vector<vector<string>> Data;
+    
     Data = database->Execute("SELECT * FROM example", 3 //Column size );
     /*  database->Execute() OUTPUT
        [0] [1] ["exampleName1"] ["SomeData1"]
@@ -36,6 +39,7 @@ Closing connection
 Getting data (prepared statement)
 ```C++
     vector<vector<string>> MyData;
+    
     MyData = database->Get("SELECT * FROM example WHERE id=?", { "I:28" }, 3 //Column size );
     /*  database->Get() OUTPUT
        [0] [28] ["name"] ["username"]
@@ -43,6 +47,7 @@ Getting data (prepared statement)
 ```
 ```C++
     vector<vector<string>> MyData;
+    
     MyData = database->Get("SELECT * FROM example", 3  //Column size );
     /*  database->Get() OUTPUT
        [0] [1] ["name1"] ["username1"]
